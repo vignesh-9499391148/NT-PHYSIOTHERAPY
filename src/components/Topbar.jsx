@@ -23,7 +23,7 @@ export default function Topbar() {
           </a>
           <span className="topbar-item">
             <Clock size={14} color="#94A3B8" />
-            <span>Mon - Sat: 8:00 AM - 7:00 PM</span>
+            <span>Mon - Sat: 8:00 AM - 10:00 PM</span>
           </span>
         </div>
         <div className="topbar-socials">

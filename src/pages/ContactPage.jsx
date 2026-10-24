@@ -195,9 +195,9 @@ export default function ContactPage({ setActivePage }) {
       {/* Split Form & Map Section */}
       <section className="section section-bg">
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 1fr', gap: '3.5rem', alignItems: 'start' }}>
+          <div className="contact-split-grid">
             {/* Contact Form */}
-            <div style={{ background: 'var(--bs-white)', padding: '3rem 2.5rem', borderRadius: '20px', border: '1px solid var(--bs-border)', boxShadow: 'var(--shadow-sm)', position: 'relative', overflow: 'hidden' }}>
+            <div className="contact-form-card">
               <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: 'linear-gradient(135deg, #128C7E, #25D366)' }} />
               <span className="sub-title-badge">Direct Message</span>
               <h2 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Send Us A Message</h2>
@@ -353,7 +353,7 @@ export default function ContactPage({ setActivePage }) {
 
               {/* Styled Interactive Location Map */}
               <div style={{ background: 'var(--bs-white)', borderRadius: '16px', overflow: 'hidden', border: '1px solid var(--bs-border)', boxShadow: 'var(--shadow-sm)' }}>
-                <div style={{ padding: '1.25rem 1.5rem', borderBottom: '1px solid var(--bs-border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div style={{ padding: '1.25rem 1.5rem', borderBottom: '1px solid var(--bs-border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '8px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                     <MapPin size={18} color="var(--bs-primary)" />
                     <strong style={{ fontSize: '0.95rem' }}>NT Physiotherapy Clinic</strong>

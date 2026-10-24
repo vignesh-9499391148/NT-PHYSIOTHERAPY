@@ -39,7 +39,7 @@ export default function AppointmentPage({ setActivePage, selectedDepartment = ''
       {/* Main Booking Section */}
       <section className="section">
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.35fr', gap: '3.5rem', alignItems: 'start' }}>
+          <div className="appointment-split-grid">
             {/* Left Column: Guidelines & Contact */}
             <div>
               <span className="sub-title-badge">Patient Protocol</span>
@@ -102,7 +102,7 @@ export default function AppointmentPage({ setActivePage, selectedDepartment = ''
           </div>
 
           {/* Local Appointment Registry / Bookings Viewer */}
-          <div style={{ marginTop: '5rem', background: 'var(--bs-light)', padding: '2.5rem', borderRadius: '20px', border: '1px solid var(--bs-border)' }}>
+          <div style={{ marginTop: '3.5rem', background: 'var(--bs-light)', padding: 'clamp(1rem, 3.5vw, 2.25rem)', borderRadius: '20px', border: '1px solid var(--bs-border)' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem', marginBottom: '1.5rem' }}>
               <div>
                 <h3 style={{ fontSize: '1.4rem', margin: 0 }}>Your Scheduled Bookings</h3>
@@ -124,12 +124,12 @@ export default function AppointmentPage({ setActivePage, selectedDepartment = ''
             </div>
 
             {appointments.length === 0 ? (
-              <div style={{ textAlign: 'center', padding: '2.5rem', background: 'var(--bs-white)', borderRadius: '12px', border: '1px dashed var(--bs-border)' }}>
+              <div style={{ textAlign: 'center', padding: 'clamp(1.5rem, 4vw, 2.5rem)', background: 'var(--bs-white)', borderRadius: '12px', border: '1px dashed var(--bs-border)' }}>
                 <Calendar size={36} color="var(--bs-gray)" style={{ margin: '0 auto 0.75rem', opacity: 0.5 }} />
                 <p style={{ color: 'var(--bs-gray)', margin: 0 }}>No active appointments found. Use the form above to schedule your first therapy session.</p>
               </div>
             ) : (
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '1.25rem' }}>
                 {appointments.map((apt) => (
                   <div key={apt.id} style={{ background: 'var(--bs-white)', padding: '1.5rem', borderRadius: '12px', border: '1px solid var(--bs-border)', boxShadow: 'var(--shadow-sm)' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>

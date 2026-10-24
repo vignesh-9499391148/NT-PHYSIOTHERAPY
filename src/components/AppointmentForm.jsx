@@ -237,7 +237,7 @@ export default function AppointmentForm({ initialDepartment = '' }) {
             Consultation Type:
           </label>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '12px' }}>
+          <div className="consult-type-grid">
             <button
               type="button"
               onClick={() => setFormData(prev => ({
@@ -315,7 +315,7 @@ export default function AppointmentForm({ initialDepartment = '' }) {
         </div>
 
         {/* Clean Form Grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.1rem', marginBottom: '1.1rem' }}>
+        <div className="form-grid-responsive">
           <div>
             <label className="form-label">First Name *</label>
             <input
@@ -408,10 +408,8 @@ export default function AppointmentForm({ initialDepartment = '' }) {
               <option value="Physiotherapy">Physiotherapy & Rehab</option>
               <option value="Home Visit Physiotherapy">🏡 Home Visit Physiotherapy (Doorstep)</option>
               <option value="Manual Therapy">Manual Therapy & Joint Alignment</option>
-              <option value="Chiropractic">Spine & Postural Alignment</option>
               <option value="Sports Injuries">Sports Injury Treatment</option>
               <option value="Pain Management">Chronic Pain Management</option>
-              <option value="Workplace RSI">Workplace Strain & Ergonomics</option>
             </select>
           </div>
 
@@ -514,7 +512,7 @@ export default function AppointmentForm({ initialDepartment = '' }) {
               <button onClick={resetForm} style={{ background: 'none', border: 'none', fontSize: '1.4rem', cursor: 'pointer', color: '#64748B' }}>&times;</button>
             </div>
             
-            <div style={{ padding: '1.75rem' }}>
+            <div style={{ padding: 'clamp(1.1rem, 3.5vw, 1.75rem)' }}>
               <div style={{ textAlign: 'center', marginBottom: '1.25rem' }}>
                 <span style={{ display: 'inline-block', background: 'var(--bs-emerald-light)', color: '#059669', fontWeight: 800, padding: '0.35rem 1rem', borderRadius: '50px', fontSize: '0.88rem', marginBottom: '0.5rem' }}>
                   Confirmation ID: {confirmedTicket.id}
@@ -525,42 +523,42 @@ export default function AppointmentForm({ initialDepartment = '' }) {
               </div>
 
               <div style={{ background: 'var(--bs-light)', padding: '1.25rem', borderRadius: '12px', border: '1px solid var(--bs-border)', display: 'flex', flexDirection: 'column', gap: '0.65rem', fontSize: '0.9rem', marginBottom: '1.5rem' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '4px' }}>
                   <span style={{ color: 'var(--bs-text-muted)' }}>Consultation Mode:</span>
                   <strong style={{ color: confirmedTicket.visitType === 'Home Visit' ? 'var(--bs-emerald)' : 'var(--bs-primary)' }}>
                     {confirmedTicket.visitType === 'Home Visit' ? '🏡 Home Visit (Doorstep)' : '🏥 In-Clinic Consultation'}
                   </strong>
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '4px' }}>
                   <span style={{ color: 'var(--bs-text-muted)' }}>Department:</span>
                   <strong>{confirmedTicket.department}</strong>
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '4px' }}>
                   <span style={{ color: 'var(--bs-text-muted)' }}>Attending Specialist:</span>
                   <strong>{confirmedTicket.doctor}</strong>
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '4px' }}>
                   <span style={{ color: 'var(--bs-text-muted)' }}>Scheduled Date:</span>
                   <strong>{confirmedTicket.date}</strong>
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '4px' }}>
                   <span style={{ color: 'var(--bs-text-muted)' }}>Phone:</span>
                   <strong>{confirmedTicket.phone}</strong>
                 </div>
               </div>
 
-              <div style={{ display: 'flex', gap: '0.75rem' }}>
+              <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
                 <button
                   onClick={() => alert(`Appointment voucher ${confirmedTicket.id} saved to your device.`)}
                   className="btn btn-secondary"
-                  style={{ flex: 1 }}
+                  style={{ flex: '1 1 140px' }}
                 >
                   Download Summary
                 </button>
                 <button
                   onClick={resetForm}
                   className="btn btn-emerald"
-                  style={{ flex: 1 }}
+                  style={{ flex: '1 1 100px' }}
                 >
                   Done
                 </button>

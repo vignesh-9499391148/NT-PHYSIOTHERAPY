@@ -9,8 +9,7 @@ import SectionHeading from '../components/SectionHeading';
 import ServiceCard from '../components/ServiceCard';
 import AppointmentForm from '../components/AppointmentForm';
 import TeamCard from '../components/TeamCard';
-import BlogCard from '../components/BlogCard';
-import { SERVICES, FEATURES, TEAM_MEMBERS, BLOG_POSTS, CLINIC_INFO } from '../data/clinicData';
+import { SERVICES, FEATURES, TEAM_MEMBERS, CLINIC_INFO } from '../data/clinicData';
 
 export default function HomePage({ setActivePage, onSelectService, onSelectDoctor, onSelectBlog }) {
   return (
@@ -154,6 +153,28 @@ export default function HomePage({ setActivePage, onSelectService, onSelectDocto
 
               {/* Who Is Home Visit For? */}
               <div className="home-visit-card">
+                <div style={{ position: 'relative', height: '175px', borderRadius: '12px', overflow: 'hidden', marginBottom: '1.25rem', border: '1px solid var(--bs-border)' }}>
+                  <img
+                    src="/home-visit-physiotherapy.png"
+                    alt="Dr. Yuvanraj DN conducting home visit physiotherapy with resistance band exercises"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%', display: 'block' }}
+                  />
+                  <div style={{
+                    position: 'absolute',
+                    bottom: '8px',
+                    left: '8px',
+                    background: 'rgba(15, 23, 42, 0.75)',
+                    backdropFilter: 'blur(6px)',
+                    color: '#FFFFFF',
+                    padding: '3px 10px',
+                    borderRadius: '20px',
+                    fontSize: '0.74rem',
+                    fontWeight: 700,
+                    letterSpacing: '0.03em'
+                  }}>
+                    Doorstep Rehabilitation
+                  </div>
+                </div>
                 <h4 style={{ color: 'var(--bs-dark)', fontSize: '1.15rem', fontWeight: 800, marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <ShieldCheck size={20} color="var(--bs-emerald)" />
                   Who Benefits Most from Home Visits?
@@ -193,43 +214,35 @@ export default function HomePage({ setActivePage, onSelectService, onSelectDocto
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.1rem' }}>
-            <div style={{ background: 'var(--bs-white)', padding: '1.4rem 1.25rem', borderRadius: 'var(--radius-lg)', border: '1px solid var(--bs-border)', boxShadow: 'var(--shadow-xs)' }}>
-              <div style={{ width: '38px', height: '38px', borderRadius: '50%', background: 'var(--bs-primary-light)', color: 'var(--bs-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '800', marginBottom: '0.75rem' }}>
-                01
-              </div>
-              <h4 style={{ fontSize: '1.12rem', marginBottom: '0.5rem' }}>In-Depth Assessment</h4>
-              <p style={{ fontSize: '0.9rem', color: 'var(--bs-text)', margin: 0 }}>
+          <div className="methodology-grid">
+            <div className="methodology-card">
+              <div className="methodology-num">01</div>
+              <h4>In-Depth Assessment</h4>
+              <p>
                 Comprehensive evaluation of spinal curvature, range of motion, muscle imbalances, and nerve tension to pinpoint root pathology.
               </p>
             </div>
 
-            <div style={{ background: 'var(--bs-white)', padding: '1.4rem 1.25rem', borderRadius: 'var(--radius-lg)', border: '1px solid var(--bs-border)', boxShadow: 'var(--shadow-xs)' }}>
-              <div style={{ width: '38px', height: '38px', borderRadius: '50%', background: 'var(--bs-primary-light)', color: 'var(--bs-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '800', marginBottom: '0.75rem' }}>
-                02
-              </div>
-              <h4 style={{ fontSize: '1.12rem', marginBottom: '0.5rem' }}>Hands-On Relief</h4>
-              <p style={{ fontSize: '0.9rem', color: 'var(--bs-text)', margin: 0 }}>
+            <div className="methodology-card">
+              <div className="methodology-num">02</div>
+              <h4>Hands-On Relief</h4>
+              <p>
                 Gentle manual joint mobilization and soft-tissue myofascial release to reduce swelling, spasm, and immediate pain.
               </p>
             </div>
 
-            <div style={{ background: 'var(--bs-white)', padding: '1.4rem 1.25rem', borderRadius: 'var(--radius-lg)', border: '1px solid var(--bs-border)', boxShadow: 'var(--shadow-xs)' }}>
-              <div style={{ width: '38px', height: '38px', borderRadius: '50%', background: 'var(--bs-primary-light)', color: 'var(--bs-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '800', marginBottom: '0.75rem' }}>
-                03
-              </div>
-              <h4 style={{ fontSize: '1.12rem', marginBottom: '0.5rem' }}>Kinetic Retraining</h4>
-              <p style={{ fontSize: '0.9rem', color: 'var(--bs-text)', margin: 0 }}>
+            <div className="methodology-card">
+              <div className="methodology-num">03</div>
+              <h4>Kinetic Retraining</h4>
+              <p>
                 Targeted muscle activation and functional exercise progressions that rebuild core stability and correct compensation habits.
               </p>
             </div>
 
-            <div style={{ background: 'var(--bs-white)', padding: '1.4rem 1.25rem', borderRadius: 'var(--radius-lg)', border: '1px solid var(--bs-border)', boxShadow: 'var(--shadow-xs)' }}>
-              <div style={{ width: '38px', height: '38px', borderRadius: '50%', background: '#ECFDF5', color: '#059669', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: '800', marginBottom: '0.75rem' }}>
-                04
-              </div>
-              <h4 style={{ fontSize: '1.12rem', marginBottom: '0.5rem' }}>Long-Term Prevention</h4>
-              <p style={{ fontSize: '0.9rem', color: 'var(--bs-text)', margin: 0 }}>
+            <div className="methodology-card">
+              <div className="methodology-num" style={{ background: '#ECFDF5', color: '#059669', borderColor: '#A7F3D0' }}>04</div>
+              <h4>Long-Term Prevention</h4>
+              <p>
                 Customized home maintenance regimen and ergonomic workplace guidance so you stay completely pain-free for years to come.
               </p>
             </div>
@@ -240,29 +253,11 @@ export default function HomePage({ setActivePage, onSelectService, onSelectDocto
       {/* 6. Chief Physiotherapist Profile Showcase */}
       <section className="section" id="team">
         <div className="container">
-          <div style={{
-            background: 'var(--bs-white)',
-            borderRadius: 'var(--radius-xl)',
-            border: '1px solid var(--bs-border)',
-            padding: '2rem 1.75rem',
-            boxShadow: 'var(--shadow-sm)',
-            display: 'grid',
-            gridTemplateColumns: '1fr 1.3fr',
-            gap: '2rem',
-            alignItems: 'center'
-          }}>
-            <div>
+          <div className="doctor-profile-showcase">
+            <div className="doctor-profile-img-wrap">
               <img
-                src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=800&q=80"
+                src={TEAM_MEMBERS[0]?.image || "/dr-yuvanraj.jpg"}
                 alt="Dr. Yuvanraj DN, BPT - Chief Physiotherapist"
-                style={{
-                  width: '100%',
-                  height: '360px',
-                  objectFit: 'cover',
-                  borderRadius: 'var(--radius-lg)',
-                  boxShadow: 'var(--shadow-md)',
-                  border: '1px solid var(--bs-border)'
-                }}
               />
             </div>
 
@@ -281,18 +276,18 @@ export default function HomePage({ setActivePage, onSelectService, onSelectDocto
                 "At NT Physiotherapy Clinic, I established our practice on a foundational belief: true rehabilitation requires compassionate listening, individualized hands-on precision, and treating each patient as a whole human being rather than a symptom on a chart."
               </p>
 
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem', marginBottom: '1.75rem' }}>
-                <div style={{ background: 'var(--bs-light)', padding: '0.85rem 1rem', borderRadius: 'var(--radius-md)' }}>
-                  <div style={{ fontSize: '1.15rem', fontWeight: '800', color: 'var(--bs-dark)' }}>500+</div>
+              <div className="doctor-stats-grid">
+                <div style={{ background: 'var(--bs-light)', padding: '0.9rem 1.1rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--bs-border)' }}>
+                  <div style={{ fontSize: '1.25rem', fontWeight: '800', color: 'var(--bs-dark)' }}>500+</div>
                   <div style={{ fontSize: '0.82rem', color: 'var(--bs-text-muted)' }}>Patients Successfully Rehabilitated</div>
                 </div>
-                <div style={{ background: 'var(--bs-light)', padding: '0.85rem 1rem', borderRadius: 'var(--radius-md)' }}>
-                  <div style={{ fontSize: '1.15rem', fontWeight: '800', color: 'var(--bs-primary)' }}>1-on-1</div>
+                <div style={{ background: 'var(--bs-light)', padding: '0.9rem 1.1rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--bs-border)' }}>
+                  <div style={{ fontSize: '1.25rem', fontWeight: '800', color: 'var(--bs-primary)' }}>1-on-1</div>
                   <div style={{ fontSize: '0.82rem', color: 'var(--bs-text-muted)' }}>Personal Doctor Care (No Assistants)</div>
                 </div>
               </div>
 
-              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+              <div className="doctor-cta-actions">
                 <button
                   onClick={() => {
                     setActivePage('appointment');
@@ -329,29 +324,6 @@ export default function HomePage({ setActivePage, onSelectService, onSelectDocto
 
           <div style={{ maxWidth: '820px', margin: '0 auto' }}>
             <AppointmentForm />
-          </div>
-        </div>
-      </section>
-
-      {/* 8. Health & Recovery Insights Blog */}
-      <section className="section" id="blog">
-        <div className="container">
-          <div className="section-header">
-            <span className="section-tag">Clinical Health Education</span>
-            <h2 className="section-title">Practical Health Guidance & Postural Tips</h2>
-            <p className="section-description">
-              Read actionable recommendations from our physiotherapy practice on desk ergonomics, preventing spine compression, and sports injury recovery.
-            </p>
-          </div>
-
-          <div className="services-grid">
-            {BLOG_POSTS.map((post) => (
-              <BlogCard
-                key={post.id}
-                post={post}
-                onReadPost={onSelectBlog}
-              />
-            ))}
           </div>
         </div>
       </section>

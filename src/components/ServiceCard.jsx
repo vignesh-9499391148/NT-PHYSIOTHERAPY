@@ -5,15 +5,18 @@ export default function ServiceCard({ service, onSelectService, onBookService })
   return (
     <div className="service-card">
       <div className="service-img-wrapper">
-        <img src={service.image} alt={service.title} loading="lazy" />
-        <div className="service-icon-badge">
-          <CheckCircle size={22} />
+        <img 
+          src={service.image} 
+          alt={service.title} 
+          loading="lazy" 
+          style={service.imagePosition ? { objectPosition: service.imagePosition } : {}}
+        />
+        <span className="service-category-pill">{service.category}</span>
+        <div className="service-icon-badge" title="Evidence-Based Treatment">
+          <CheckCircle size={20} />
         </div>
       </div>
       <div className="service-body">
-        <span style={{ fontSize: '0.8rem', color: 'var(--bs-primary)', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '0.4rem', display: 'block' }}>
-          {service.category}
-        </span>
         <h3>{service.title}</h3>
         <p>{service.description}</p>
         
@@ -23,12 +26,26 @@ export default function ServiceCard({ service, onSelectService, onBookService })
             className="btn btn-primary btn-sm"
           >
             <span>Read More</span>
-            <ArrowRight size={14} />
+            <span className="btn-arrow-icon">
+              <ArrowRight size={14} />
+            </span>
           </button>
-          <span style={{ fontSize: '0.85rem', color: 'var(--bs-gray)', display: 'flex', alignItems: 'center', gap: '4px' }}>
-            <Clock size={14} />
-            {service.duration}
-          </span>
+          
+          {(service.duration || service.rate) && (
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', minWidth: 0, flexShrink: 0 }}>
+              {service.duration && (
+                <span style={{ fontSize: '0.82rem', color: 'var(--bs-gray)', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                  <Clock size={13} />
+                  {service.duration}
+                </span>
+              )}
+              {service.rate && (
+                <span style={{ fontSize: '0.78rem', fontWeight: '700', color: 'var(--bs-primary)' }}>
+                  {service.rate}
+                </span>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -36,8 +36,8 @@ export default function AboutPage({ setActivePage, onSelectDoctor }) {
               />
 
               <img
-                src="https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=500&q=80"
-                alt="Doctor administering therapy"
+                src="/manual-therapy.png"
+                alt="Doctor administering manual therapy joint mobilization"
                 className="about-floating-img"
               />
             </div>
@@ -62,9 +62,9 @@ export default function AboutPage({ setActivePage, onSelectDoctor }) {
                 We reject the "assembly line" therapy model. Every patient is evaluated and treated directly by Dr. Yuvanraj DN, BPT for full 45 to 60-minute one-on-one sessions, utilizing hands-on manual techniques, cutting-edge recovery modalities, and custom movement retraining.
               </p>
 
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem', marginBottom: '1.75rem' }}>
+              <div className="about-features-grid">
                 <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
-                  <Award size={22} color="#0EA5E9" style={{ flexShrink: 0, marginTop: '2px' }} />
+                  <Award size={22} color="var(--bs-primary)" style={{ flexShrink: 0, marginTop: '2px' }} />
                   <div>
                     <h5 style={{ margin: '0 0 2px', fontSize: '0.95rem', fontWeight: 700, color: 'var(--bs-dark)' }}>
                       Certified Physiotherapist
@@ -75,7 +75,7 @@ export default function AboutPage({ setActivePage, onSelectDoctor }) {
                   </div>
                 </div>
                 <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
-                  <Clock size={22} color="#0EA5E9" style={{ flexShrink: 0, marginTop: '2px' }} />
+                  <Clock size={22} color="var(--bs-primary)" style={{ flexShrink: 0, marginTop: '2px' }} />
                   <div>
                     <h5 style={{ margin: '0 0 2px', fontSize: '0.95rem', fontWeight: 700, color: 'var(--bs-dark)' }}>
                       Zero Wait Time
@@ -93,7 +93,6 @@ export default function AboutPage({ setActivePage, onSelectDoctor }) {
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
                 className="btn btn-primary btn-lg"
-                style={{ background: '#0EA5E9', borderColor: '#0EA5E9', borderRadius: '8px' }}
               >
                 <Calendar size={18} />
                 <span>Book A Consultation</span>
@@ -106,7 +105,7 @@ export default function AboutPage({ setActivePage, onSelectDoctor }) {
       {/* 4 Clinical Stat Cards */}
       <section className="section" style={{ paddingTop: 0 }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.25rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))', gap: '1.25rem' }}>
             <div className="stat-card-item">
               <div className="stat-card-number">3+</div>
               <div className="stat-card-label">YEARS DEDICATED PRACTICE</div>
@@ -136,10 +135,10 @@ export default function AboutPage({ setActivePage, onSelectDoctor }) {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '1.5rem' }}>
             <div className="facility-card">
               <img
-                src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=700&q=80"
+                src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=85"
                 alt="Private Treatment Suites"
                 className="facility-card-img"
               />
@@ -151,7 +150,7 @@ export default function AboutPage({ setActivePage, onSelectDoctor }) {
 
             <div className="facility-card">
               <img
-                src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=700&q=80"
+                src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=85"
                 alt="Kinetic Movement Gym"
                 className="facility-card-img"
               />
@@ -163,7 +162,7 @@ export default function AboutPage({ setActivePage, onSelectDoctor }) {
 
             <div className="facility-card">
               <img
-                src="https://images.unsplash.com/photo-1584467735871-8e85353a8413?auto=format&fit=crop&w=700&q=80"
+                src="https://images.unsplash.com/photo-1584467735871-8e85353a8413?auto=format&fit=crop&w=800&q=85"
                 alt="Electro & Contrast Therapy"
                 className="facility-card-img"
               />

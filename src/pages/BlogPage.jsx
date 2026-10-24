@@ -109,7 +109,7 @@ export default function BlogPage({ setActivePage }) {
                 style={{ width: '100%', height: '280px', objectFit: 'cover', borderRadius: '12px', marginBottom: '1.5rem' }}
               />
               
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', color: 'var(--bs-gray)', fontSize: '0.85rem', marginBottom: '1rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '0.6rem 1.25rem', color: 'var(--bs-gray)', fontSize: '0.85rem', marginBottom: '1rem' }}>
                 <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                   <Calendar size={14} color="var(--bs-primary)" /> {activeArticle.date}
                 </span>

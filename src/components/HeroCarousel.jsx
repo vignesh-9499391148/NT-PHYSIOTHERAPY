@@ -6,7 +6,7 @@ const HERO_SLIDES = [
     id: 1,
     tag: "In-Clinic & Home Visits Available",
     title: "Best Clinical Solution For A Pain-Free Life",
-    desc: "Evidence-based physical therapy, manual chiropractic alignment, and dedicated home visit care designed to restore natural movement and eliminate chronic discomfort.",
+    desc: "Evidence-based physical therapy, hands-on manual therapy, and dedicated home visit care designed to restore natural movement and eliminate chronic discomfort.",
     image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1600&q=80",
     primaryCta: "Book Appointment",
     secondaryCta: "Our Services"

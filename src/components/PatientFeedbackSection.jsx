@@ -128,7 +128,7 @@ export default function PatientFeedbackSection({
         />
 
         {/* Centered Patient Feedback Form */}
-        <div style={{
+        <div className="feedback-form-card" style={{
           maxWidth: '720px',
           margin: '0 auto',
           background: 'var(--bs-white)',
@@ -136,8 +136,7 @@ export default function PatientFeedbackSection({
           border: '1px solid var(--bs-border)',
           boxShadow: '0 10px 30px -5px rgba(18, 140, 126, 0.12), 0 4px 10px rgba(0, 0, 0, 0.04)',
           position: 'relative',
-          overflow: 'hidden',
-          padding: '2.5rem 2.25rem'
+          overflow: 'hidden'
         }}>
           {/* Top Emerald Gradient Accent Bar */}
           <div style={{
@@ -314,7 +313,7 @@ export default function PatientFeedbackSection({
               </div>
 
               {/* Form Input Fields Grid */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.1rem', marginBottom: '1.1rem' }}>
+              <div className="form-grid-responsive">
                 <div>
                   <label className="form-label">Your Full Name *</label>
                   <input
@@ -343,7 +342,7 @@ export default function PatientFeedbackSection({
               </div>
 
               {/* Services & Treatment Received */}
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.1rem', marginBottom: '1.1rem' }}>
+              <div className="form-grid-responsive">
                 <div>
                   <label className="form-label">Clinical Service Received</label>
                   <select

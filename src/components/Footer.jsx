@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, Phone, Mail, ChevronRight, ShieldCheck } from 'lucide-react';
+import { MapPin, Phone, Mail, ChevronRight, ShieldCheck, Code, ExternalLink } from 'lucide-react';
 import { CLINIC_INFO } from '../data/clinicData';
 
 export default function Footer({ setActivePage }) {
@@ -56,22 +56,7 @@ export default function Footer({ setActivePage }) {
                   </svg>
                 </a>
               )}
-              {CLINIC_INFO.socials.linkedin && (
-                <a
-                  href={CLINIC_INFO.socials.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="social-icon-btn"
-                  aria-label="LinkedIn"
-                  title="LinkedIn"
-                >
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                    <rect x="2" y="9" width="4" height="12"></rect>
-                    <circle cx="4" cy="4" r="2"></circle>
-                  </svg>
-                </a>
-              )}
+
               <a
                 href={`https://wa.me/919943031349?text=${encodeURIComponent('Hello Dr. Yuvanraj, I would like to book an appointment.')}`}
                 target="_blank"
@@ -140,12 +125,12 @@ export default function Footer({ setActivePage }) {
               </li>
               <li className="footer-link-item">
                 <a href="#services" onClick={(e) => { e.preventDefault(); handleNav('services'); }}>
-                  <ChevronRight size={14} color="var(--bs-primary)" /> Heat & Cold Protocol
+                  <ChevronRight size={14} color="var(--bs-primary)" /> Home Visit Physiotherapy
                 </a>
               </li>
               <li className="footer-link-item">
                 <a href="#services" onClick={(e) => { e.preventDefault(); handleNav('services'); }}>
-                  <ChevronRight size={14} color="var(--bs-primary)" /> Chiropractic Care
+                  <ChevronRight size={14} color="var(--bs-primary)" /> Preventative Mobility Care
                 </a>
               </li>
               <li className="footer-link-item">
@@ -155,7 +140,7 @@ export default function Footer({ setActivePage }) {
               </li>
               <li className="footer-link-item">
                 <a href="#services" onClick={(e) => { e.preventDefault(); handleNav('services'); }}>
-                  <ChevronRight size={14} color="var(--bs-primary)" /> Spine & Lumbar Relief
+                  <ChevronRight size={14} color="var(--bs-primary)" /> Back & Neck Pain Relief
                 </a>
               </li>
             </ul>
@@ -200,6 +185,28 @@ export default function Footer({ setActivePage }) {
           <div>
             &copy; {new Date().getFullYear()} <strong>{CLINIC_INFO.name}</strong>. All Rights Reserved.
           </div>
+          <a
+            href={CLINIC_INFO.developer?.linkedin || "https://www.linkedin.com/in/vignesh-k-35a704285?utm_source=share_via&utm_content=profile&utm_medium=member_android"}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="footer-developer-credit"
+            title="Website Developed by VIGNESH — View LinkedIn Profile"
+            aria-label="Website Developed by VIGNESH (opens LinkedIn profile in a new tab)"
+          >
+            <Code size={15} color="var(--bs-primary)" aria-hidden="true" />
+            <span>Website Developed by <strong>{CLINIC_INFO.developer?.name || "VIGNESH"}</strong></span>
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="footer-developer-linkedin-icon"
+              aria-hidden="true"
+            >
+              <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"></path>
+            </svg>
+            <ExternalLink size={12} className="footer-developer-ext-icon" aria-hidden="true" />
+          </a>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#8D94A8' }}>
             <ShieldCheck size={16} color="var(--bs-primary)" />
             <span>Cybersecurity Guard & Form Sanitization Active</span>

@@ -30,13 +30,13 @@ export default function TeamPage({ setActivePage, onSelectDoctor }) {
             description="Leading physical therapy, spine alignment, and kinetic rehabilitation care in Vadamadurai, Dindigul."
           />
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'minmax(280px, 360px) 1fr', gap: '3rem', alignItems: 'start', background: 'var(--bs-white)', padding: '2.5rem', borderRadius: '20px', border: '1px solid var(--bs-border)', boxShadow: 'var(--shadow-md)' }}>
+          <div className="doctor-detail-card">
             <div>
               <div style={{ borderRadius: '16px', overflow: 'hidden', boxShadow: 'var(--shadow-sm)', marginBottom: '1.5rem' }}>
                 <img
                   src={doctor.image}
                   alt={doctor.name}
-                  style={{ width: '100%', height: '380px', objectFit: 'cover' }}
+                  style={{ width: '100%', height: '380px', objectFit: 'cover', objectPosition: 'center top' }}
                 />
               </div>
 
@@ -97,7 +97,7 @@ export default function TeamPage({ setActivePage, onSelectDoctor }) {
               </p>
 
               <h4 style={{ fontSize: '1.15rem', marginBottom: '1rem' }}>Clinical Specializations:</h4>
-              <ul style={{ listStyle: 'none', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', marginBottom: '2rem' }}>
+              <ul className="doctor-specs-list">
                 <li style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.92rem' }}>
                   <CheckCircle2 size={16} color="var(--bs-primary)" />
                   <span>Hands-on Manual Therapy</span>
@@ -112,7 +112,7 @@ export default function TeamPage({ setActivePage, onSelectDoctor }) {
                 </li>
                 <li style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.92rem' }}>
                   <CheckCircle2 size={16} color="var(--bs-primary)" />
-                  <span>Occupational Desk Strain Care</span>
+                  <span>Doorstep Home Visit Care</span>
                 </li>
               </ul>
 

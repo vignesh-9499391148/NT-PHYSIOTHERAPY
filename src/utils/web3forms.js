@@ -12,7 +12,8 @@ import { CLINIC_INFO } from '../data/clinicData';
  * @returns {Promise<{ success: boolean, message?: string, localOnly?: boolean }>}
  */
 export async function submitToWeb3Forms({ formType, data, subject }) {
-  const accessKey = CLINIC_INFO.web3formsAccessKey || import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+  const rawKey = CLINIC_INFO.web3formsAccessKey || import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || '';
+  const accessKey = String(rawKey).replace(/^["']|["']$/g, '').trim();
 
   // If access key is not yet set or is default placeholder, log graceful notice
   if (!accessKey || accessKey === 'YOUR_WEB3FORMS_ACCESS_KEY') {
@@ -21,12 +22,13 @@ export async function submitToWeb3Forms({ formType, data, subject }) {
   }
 
   try {
+    const replyEmail = data['Email Address'] || data['Email'] || data['email'];
     const payload = {
       access_key: accessKey,
       from_name: 'NT Physiotherapy Clinic Website',
       subject: subject || `[NT Physiotherapy] New ${formType.toUpperCase()} Submission`,
       form_type: formType,
-      recipient: CLINIC_INFO.email,
+      ...(replyEmail ? { replyto: replyEmail } : {}),
       timestamp: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
       ...data
     };

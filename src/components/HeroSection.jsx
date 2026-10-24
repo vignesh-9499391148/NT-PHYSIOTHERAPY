@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Calendar, Phone, Home, Check, ArrowRight, ShieldCheck, Activity, Award } from 'lucide-react';
 import { CLINIC_INFO } from '../data/clinicData';
 
@@ -32,19 +32,60 @@ const PAIN_CONDITIONS = [
 export default function HeroSection({ setActivePage }) {
   const [selectedCondition, setSelectedCondition] = useState(PAIN_CONDITIONS[0]);
 
+  // Dynamic timing-based availability status (Small compact indicator: 8 AM - 10 PM)
+  const [availability, setAvailability] = useState(() => {
+    const hour = new Date().getHours();
+    const isOpen = hour >= 8 && hour < 22; // 8:00 AM to 9:59 PM is Open, 10:00 PM (22:00) onwards is Closed
+    return {
+      isOpen,
+      statusLabel: isOpen ? 'Available:' : 'Not Available:',
+      statusDesc: isOpen ? 'Till 10:00 PM' : 'After 10:00 PM',
+      badge: isOpen ? 'Dr. Yuvanraj DN, BPT' : 'Reopens 8:00 AM'
+    };
+  });
+
+  useEffect(() => {
+    const calculateAvailability = () => {
+      const hour = new Date().getHours();
+      const isOpen = hour >= 8 && hour < 22;
+      setAvailability({
+        isOpen,
+        statusLabel: isOpen ? 'Available:' : 'Not Available:',
+        statusDesc: isOpen ? 'Till 10:00 PM' : 'After 10:00 PM',
+        badge: isOpen ? 'Dr. Yuvanraj DN, BPT' : 'Reopens 8:00 AM'
+      });
+    };
+
+    calculateAvailability();
+    const timer = setInterval(calculateAvailability, 30000); // Check every 30 seconds
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section className="hero-human">
       <div className="container">
         <div className="hero-grid">
           {/* Left Column: Clinical Value & Doctor Care */}
           <div>
-            <div className="hero-badge">
-              <ShieldCheck size={16} />
-              <span>Dr. Yuvanraj DN, BPT • Chief Physiotherapist</span>
+            {/* Live Doctor Status Capsule (Timing-Based Availability) */}
+            <div 
+              className={`hero-status-pill ${availability.isOpen ? 'available' : 'unavailable'}`}
+              title={availability.isOpen 
+                ? "Dr. Yuvanraj DN is available for clinic consultations and doorstep visits until 10:00 PM." 
+                : "Clinic consultations are closed after 10:00 PM. Reopens at 8:00 AM. Emergency booking is accepted online."}
+            >
+              <span className="hero-status-dot-wrapper">
+                <span className="hero-status-dot"></span>
+                <span className="hero-status-ring"></span>
+              </span>
+              <span className="hero-status-text">
+                <strong>{availability.statusLabel}</strong> {availability.statusDesc}
+              </span>
+              <span className="hero-status-badge">{availability.badge}</span>
             </div>
 
             <h1 className="hero-title">
-              Targeted Physical Therapy to <span className="highlight">Restore Movement</span> & Relieve Pain.
+              Targeted Physical Therapy to <span className="highlight-gradient">Restore Movement</span> & Live Pain-Free.
             </h1>
 
             <p className="hero-desc">
@@ -103,23 +144,26 @@ export default function HeroSection({ setActivePage }) {
 
           {/* Right Column: Authentic Clinical Visual & Interactive Symptom Helper */}
           <div className="hero-visual-card">
+            {/* Ambient Aura Spotlight Effect */}
+            <div className="hero-visual-glow"></div>
+
             <div className="hero-image-wrapper">
               <img
-                src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1000&q=80"
+                src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=85"
                 alt="Dr. Yuvanraj DN conducting physical therapy consultation"
                 className="hero-main-img"
               />
 
               {/* Verified Clinical Stat Pill - Top */}
               <div className="hero-floating-badge hero-floating-top">
-                <div className="hero-badge-icon" style={{ background: '#ECFDF5', color: '#059669' }}>
-                  <Award size={22} />
+                <div className="hero-badge-icon badge-icon-emerald">
+                  <Award size={20} />
                 </div>
-                <div>
-                  <div style={{ fontSize: '1.05rem', fontWeight: '800', color: 'var(--bs-dark)', lineHeight: 1.2 }}>
+                <div className="hero-badge-content">
+                  <div className="hero-badge-title">
                     3+ Years Practice
                   </div>
-                  <div style={{ fontSize: '0.8rem', color: 'var(--bs-text-muted)' }}>
+                  <div className="hero-badge-sub">
                     500+ Rehabilitated Patients
                   </div>
                 </div>
@@ -127,56 +171,38 @@ export default function HeroSection({ setActivePage }) {
 
               {/* Doorstep Home Care Pill - Bottom */}
               <div className="hero-floating-badge hero-floating-bottom">
-                <div className="hero-badge-icon" style={{ background: '#F0F9FB', color: '#0A5C6F' }}>
-                  <Home size={22} />
+                <div className="hero-badge-icon badge-icon-teal">
+                  <Home size={20} />
                 </div>
-                <div>
-                  <div style={{ fontSize: '1rem', fontWeight: '800', color: 'var(--bs-dark)', lineHeight: 1.2 }}>
+                <div className="hero-badge-content">
+                  <div className="hero-badge-title">
                     Home Visits Available
                   </div>
-                  <div style={{ fontSize: '0.8rem', color: 'var(--bs-text-muted)' }}>
+                  <div className="hero-badge-sub">
                     Vadamadurai & Dindigul Town
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Interactive Symptom Helper Box */}
-            <div style={{
-              background: 'var(--bs-white)',
-              borderRadius: 'var(--radius-lg)',
-              border: '1px solid var(--bs-border)',
-              padding: '1.25rem 1.5rem',
-              marginTop: '1.25rem',
-              boxShadow: 'var(--shadow-sm)'
-            }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.75rem' }}>
-                <span style={{ fontSize: '0.82rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--bs-primary)' }}>
+            {/* Interactive Symptom Helper Box (Responsive Card) */}
+            <div className="hero-symptom-card">
+              <div className="hero-symptom-header">
+                <span className="hero-symptom-label">
                   Where Are You Experiencing Pain?
                 </span>
-                <span style={{ fontSize: '0.78rem', color: 'var(--bs-text-muted)' }}>
+                <span className="hero-symptom-hint">
                   Select an area below
                 </span>
               </div>
 
               {/* Condition Pills */}
-              <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '1rem' }}>
+              <div className="hero-symptom-pills">
                 {PAIN_CONDITIONS.map((cond) => (
                   <button
                     key={cond.id}
                     onClick={() => setSelectedCondition(cond)}
-                    style={{
-                      border: '1px solid',
-                      borderColor: selectedCondition.id === cond.id ? 'var(--bs-primary)' : 'var(--bs-border)',
-                      background: selectedCondition.id === cond.id ? 'var(--bs-primary-light)' : 'var(--bs-white)',
-                      color: selectedCondition.id === cond.id ? 'var(--bs-primary)' : 'var(--bs-text)',
-                      padding: '6px 12px',
-                      borderRadius: 'var(--radius-pill)',
-                      fontSize: '0.85rem',
-                      fontWeight: selectedCondition.id === cond.id ? '700' : '500',
-                      cursor: 'pointer',
-                      transition: 'var(--transition)'
-                    }}
+                    className={`hero-condition-pill ${selectedCondition.id === cond.id ? 'active' : ''}`}
                   >
                     {cond.label}
                   </button>
@@ -184,20 +210,12 @@ export default function HeroSection({ setActivePage }) {
               </div>
 
               {/* Dynamic Condition Details */}
-              <div style={{
-                background: 'var(--bs-light)',
-                padding: '0.85rem 1rem',
-                borderRadius: 'var(--radius-md)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                gap: '1rem'
-              }}>
-                <div>
-                  <div style={{ fontSize: '0.85rem', fontWeight: '700', color: 'var(--bs-dark)' }}>
+              <div className="hero-symptom-preview">
+                <div className="hero-symptom-details">
+                  <div className="hero-symptom-tag">
                     {selectedCondition.tag}
                   </div>
-                  <div style={{ fontSize: '0.82rem', color: 'var(--bs-text)', marginTop: '2px' }}>
+                  <div className="hero-symptom-desc">
                     {selectedCondition.details}
                   </div>
                 </div>
@@ -206,8 +224,7 @@ export default function HeroSection({ setActivePage }) {
                     setActivePage('appointment');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className="btn btn-primary btn-sm"
-                  style={{ flexShrink: 0 }}
+                  className="btn btn-primary btn-sm hero-symptom-btn"
                 >
                   <span>Book for This</span>
                   <ArrowRight size={14} />

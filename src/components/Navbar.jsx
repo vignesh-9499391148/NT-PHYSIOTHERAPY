@@ -172,15 +172,24 @@ export default function Navbar({ activePage, setActivePage }) {
                 Contact Us
               </a>
             </li>
+            <li className="mobile-menu-cta">
+              <button
+                onClick={() => handleNavClick('appointment')}
+                className="btn btn-primary btn-lg"
+                style={{ width: '100%', justifyContent: 'center' }}
+              >
+                <Calendar size={18} />
+                <span>Book Consultation</span>
+              </button>
+            </li>
           </ul>
 
           {/* Nav Actions */}
           <div className="nav-actions">
-            {/* Direct Call Button (Visible on desktop) */}
+            {/* Direct Call Button (Visible on desktop & large laptops) */}
             <a
               href={`tel:${CLINIC_INFO.phone}`}
-              className="btn btn-secondary"
-              style={{ display: 'none', md: 'inline-flex' }}
+              className="btn btn-secondary nav-phone-btn"
               title="Call Clinic Directly"
             >
               <Phone size={15} color="var(--bs-primary)" />
@@ -190,7 +199,7 @@ export default function Navbar({ activePage, setActivePage }) {
             {/* Book Consultation Primary CTA */}
             <button
               onClick={() => handleNavClick('appointment')}
-              className="btn btn-primary"
+              className="btn btn-primary nav-book-btn"
             >
               <Calendar size={16} />
               <span>Book Appointment</span>

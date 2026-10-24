@@ -8,7 +8,7 @@ import { SERVICES } from '../data/clinicData';
 const FAQS = [
   {
     q: "Do I need a doctor's referral to start physical therapy?",
-    a: "No. In New York and most jurisdictions, patients have Direct Access to physical therapy services, allowing you to be evaluated and treated immediately without waiting for a physician's prescription."
+    a: "No. Patients can directly consult Dr. Yuvanraj DN, BPT for clinical evaluation, diagnosis, and treatment without waiting for a prior hospital referral."
   },
   {
     q: "What should I wear to my first physical therapy appointment?",
@@ -33,7 +33,7 @@ export default function ServicesPage({ setActivePage, onSelectService, onBookDep
   const [openFaq, setOpenFaq] = useState(0);
   const [modalService, setModalService] = useState(null);
 
-  const categories = ['All', 'Home Care', 'Physical Therapy', 'Spine Care', 'Sports Rehab', 'Pain Management'];
+  const categories = ['All', 'Home Care', 'Physical Therapy', 'Sports Rehab', 'Pain Management'];
 
   const filteredServices = activeCategory === 'All'
     ? SERVICES
@@ -62,7 +62,7 @@ export default function ServicesPage({ setActivePage, onSelectService, onBookDep
         <div className="container">
           <SectionHeading
             subtitle="Treatments Catalog"
-            title="Comprehensive Physical & Chiropractic Therapies"
+            title="Comprehensive Physical & Rehabilitation Therapies"
             description="Explore our specialized clinical modalities designed to restore joint function, relieve nerve compression, and recondition muscles."
           />
 
@@ -107,43 +107,35 @@ export default function ServicesPage({ setActivePage, onSelectService, onBookDep
             description="A clear, structured path from your initial evaluation to total functional recovery."
           />
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '2rem' }}>
-            <div style={{ background: 'var(--bs-white)', padding: '2.5rem 1.75rem', borderRadius: '16px', border: '1px solid var(--bs-border)', textAlign: 'center' }}>
-              <div style={{ width: '56px', height: '56px', background: 'var(--bs-primary)', color: '#ffffff', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.25rem', fontSize: '1.25rem', fontWeight: '700' }}>
-                1
-              </div>
-              <h4 style={{ fontSize: '1.2rem', marginBottom: '0.6rem' }}>Kinetic Evaluation</h4>
-              <p style={{ color: 'var(--bs-gray)', fontSize: '0.9rem', margin: 0 }}>
+          <div className="methodology-grid">
+            <div className="methodology-card">
+              <div className="methodology-num">01</div>
+              <h4>Kinetic Evaluation</h4>
+              <p>
                 In-depth assessment of your posture, joint range of motion, muscle imbalances, and pain triggers.
               </p>
             </div>
 
-            <div style={{ background: 'var(--bs-white)', padding: '2.5rem 1.75rem', borderRadius: '16px', border: '1px solid var(--bs-border)', textAlign: 'center' }}>
-              <div style={{ width: '56px', height: '56px', background: 'var(--bs-primary)', color: '#ffffff', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.25rem', fontSize: '1.25rem', fontWeight: '700' }}>
-                2
-              </div>
-              <h4 style={{ fontSize: '1.2rem', marginBottom: '0.6rem' }}>Custom Plan</h4>
-              <p style={{ color: 'var(--bs-gray)', fontSize: '0.9rem', margin: 0 }}>
+            <div className="methodology-card">
+              <div className="methodology-num">02</div>
+              <h4>Custom Plan</h4>
+              <p>
                 A structured roadmap pairing manual therapy, targeted electro-modalities, and active home stretches.
               </p>
             </div>
 
-            <div style={{ background: 'var(--bs-white)', padding: '2.5rem 1.75rem', borderRadius: '16px', border: '1px solid var(--bs-border)', textAlign: 'center' }}>
-              <div style={{ width: '56px', height: '56px', background: 'var(--bs-primary)', color: '#ffffff', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.25rem', fontSize: '1.25rem', fontWeight: '700' }}>
-                3
-              </div>
-              <h4 style={{ fontSize: '1.2rem', marginBottom: '0.6rem' }}>Hands-On Therapy</h4>
-              <p style={{ color: 'var(--bs-gray)', fontSize: '0.9rem', margin: 0 }}>
+            <div className="methodology-card">
+              <div className="methodology-num">03</div>
+              <h4>Hands-On Therapy</h4>
+              <p>
                 1-on-1 therapist-guided joint mobilization, myofascial release, and kinetic strength rebuilding.
               </p>
             </div>
 
-            <div style={{ background: 'var(--bs-white)', padding: '2.5rem 1.75rem', borderRadius: '16px', border: '1px solid var(--bs-border)', textAlign: 'center' }}>
-              <div style={{ width: '56px', height: '56px', background: 'var(--bs-primary)', color: '#ffffff', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.25rem', fontSize: '1.25rem', fontWeight: '700' }}>
-                4
-              </div>
-              <h4 style={{ fontSize: '1.2rem', marginBottom: '0.6rem' }}>Sustained Vitality</h4>
-              <p style={{ color: 'var(--bs-gray)', fontSize: '0.9rem', margin: 0 }}>
+            <div className="methodology-card">
+              <div className="methodology-num" style={{ background: '#ECFDF5', color: '#059669', borderColor: '#A7F3D0' }}>04</div>
+              <h4>Sustained Vitality</h4>
+              <p>
                 Milestone re-testing, functional independence, and preventative exercise routines.
               </p>
             </div>
@@ -202,19 +194,20 @@ export default function ServicesPage({ setActivePage, onSelectService, onBookDep
                   }}
                 >
                   <span style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <HelpCircle size={18} color="var(--bs-primary)" />
+                    <HelpCircle size={18} color="var(--bs-primary)" style={{ flexShrink: 0 }} />
                     {faq.q}
                   </span>
                   <ChevronDown
                     size={18}
                     style={{
+                      flexShrink: 0,
                       transform: openFaq === idx ? 'rotate(180deg)' : 'rotate(0deg)',
                       transition: 'transform 0.25s ease'
                     }}
                   />
                 </button>
                 {openFaq === idx && (
-                  <div style={{ padding: '0 1.5rem 1.5rem 2.8rem', color: 'var(--bs-gray)', fontSize: '0.95rem', lineHeight: '1.6' }}>
+                  <div style={{ padding: '0 clamp(1rem, 3vw, 1.5rem) 1.5rem clamp(1rem, 3.5vw, 2.8rem)', color: 'var(--bs-gray)', fontSize: '0.95rem', lineHeight: '1.6' }}>
                     {faq.a}
                   </div>
                 )}
@@ -236,7 +229,14 @@ export default function ServicesPage({ setActivePage, onSelectService, onBookDep
               <img
                 src={modalService.image}
                 alt={modalService.title}
-                style={{ width: '100%', height: '220px', objectFit: 'cover', borderRadius: '12px', marginBottom: '1.5rem' }}
+                style={{
+                  width: '100%',
+                  height: '240px',
+                  objectFit: 'cover',
+                  objectPosition: modalService.imagePosition || 'center center',
+                  borderRadius: '12px',
+                  marginBottom: '1.5rem'
+                }}
               />
               <span style={{ display: 'inline-block', background: 'var(--bs-primary-light)', color: 'var(--bs-primary)', fontWeight: '700', padding: '0.3rem 0.9rem', borderRadius: '50px', fontSize: '0.8rem', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
                 {modalService.category}
@@ -245,22 +245,28 @@ export default function ServicesPage({ setActivePage, onSelectService, onBookDep
                 {modalService.fullDetails}
               </p>
 
-              <div style={{ display: 'flex', gap: '1.5rem', background: 'var(--bs-light)', padding: '1rem 1.25rem', borderRadius: '10px', marginBottom: '1.75rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <Clock size={16} color="var(--bs-primary)" />
-                  <span style={{ fontSize: '0.9rem' }}><strong>Duration:</strong> {modalService.duration}</span>
+              {(modalService.duration || modalService.rate) && (
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem 1.5rem', background: 'var(--bs-light)', padding: '1rem 1.25rem', borderRadius: '10px', marginBottom: '1.75rem' }}>
+                  {modalService.duration && (
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                      <Clock size={16} color="var(--bs-primary)" />
+                      <span style={{ fontSize: '0.9rem' }}><strong>Duration:</strong> {modalService.duration}</span>
+                    </div>
+                  )}
+                  {modalService.rate && (
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                      <DollarSign size={16} color="var(--bs-primary)" />
+                      <span style={{ fontSize: '0.9rem' }}><strong>Standard Rate:</strong> {modalService.rate}</span>
+                    </div>
+                  )}
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  <DollarSign size={16} color="var(--bs-primary)" />
-                  <span style={{ fontSize: '0.9rem' }}><strong>Standard Rate:</strong> {modalService.rate}</span>
-                </div>
-              </div>
+              )}
 
-              <div style={{ display: 'flex', gap: '1rem' }}>
+              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
                 <button
                   onClick={() => setModalService(null)}
                   className="btn btn-light"
-                  style={{ flex: 1 }}
+                  style={{ flex: '1 1 140px' }}
                 >
                   Close
                 </button>
@@ -273,7 +279,7 @@ export default function ServicesPage({ setActivePage, onSelectService, onBookDep
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
                   className="btn btn-primary"
-                  style={{ flex: 1 }}
+                  style={{ flex: '1 1 200px' }}
                 >
                   <Calendar size={16} />
                   <span>Book This Treatment</span>
